@@ -13,11 +13,15 @@ Syntax highlighting library with batteries included.
 The above output was created with the following code:
 
 ```rust
-let printer = PrettyPrinter::default()
-    .language("rust")
-    .build()?;
+use prettyprint::{PrettyPrinter, PrettyPrintError};
 
-printer.file("fixtures/fib.rs")?;
+fn main() -> Result<(), PrettyPrintError> {
+    let printer = PrettyPrinter::default()
+    .language("rust")
+    .build()
+    .unwrap();
+
+    printer.file("src\\fib.rs")
 ```
 
 Note that `prettyprint` is a [builder](https://github.com/rust-unofficial/patterns/blob/master/patterns/builder.md) and can be customized. For example, if you don't like the grid or the header, you can disable those:
